@@ -103,5 +103,9 @@ public class Enemy : MonoBehaviour
             Destroy(GetComponent<Collider2D>());
             Destroy(gameObject, 2.37f);
         }
-    }
+
+        
+     }
+
+    
 }
