@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _fireRightEngine;
     [SerializeField] private GameObject _shieldVisuals;
     [SerializeField] private AudioClip _laserSound;
+    [SerializeField] private AudioClip _playerAudioExplosion;
     
     private AudioSource _playerAudio;
 
@@ -164,7 +165,12 @@ public class Player : MonoBehaviour
 
         else
         {
-            _playerExplosion.SetTrigger("OnPlayerDeath");
+             _playerExplosion.SetTrigger("OnPlayerDeath");
+            _fireLeftEngine.gameObject.SetActive(false);
+            _fireRightEngine.gameObject.SetActive(false);
+            transform.Find("Thruster").gameObject.SetActive(false);
+            _playerAudio.clip = _playerAudioExplosion;
+            _playerAudio.Play();
             _spawnManager.OnPlayerDeath();
             Destroy(gameObject, 2.8f);
         }
