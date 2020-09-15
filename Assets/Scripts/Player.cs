@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private SpawnManager _spawnManager;
     
     private bool _isTripleShotActive = false;
-    private bool _isSpeedActive = false;
+    [SerializeField] private bool _isSpeedActive = false;
     private bool _isShieldActive = false;
     
     
@@ -80,11 +80,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         CalculateMovement();
-        
+                
         if(Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             FireLaser();
         }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _isSpeedActive = true;       
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _isSpeedActive = false;
+        }
+
     }
 
     private void FireLaser()
@@ -174,6 +184,8 @@ public class Player : MonoBehaviour
             _isTripleShotActive = false;
         }
     }
+
+    
 
     public void SpeedActive()
     {
