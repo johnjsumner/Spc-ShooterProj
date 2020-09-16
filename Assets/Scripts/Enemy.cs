@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _enemyLaser;
     private float _fireRate = 3f;
     private float _canFire = -1f;
+    
 
     
 
@@ -82,7 +83,7 @@ public class Enemy : MonoBehaviour
         {
             if(_player != null)
             {
-               _player.Damage();
+                _player.Damage();
             }
 
             _explosion.SetTrigger("OnEnemyDeath");

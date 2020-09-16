@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int _lives = 3;
     [SerializeField] private int _score;
     private Animator _playerExplosion;
+    private Animator _shieldHitVis;
 
     private UI_Manager _uiManager;
     private SpawnManager _spawnManager;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
     private bool _isShieldActive = false;
-    
+    private int _shieldHits = 2;    
     
     
 
@@ -73,6 +74,13 @@ public class Player : MonoBehaviour
             Debug.LogError("Animator is NULL");
         }
 
+        _shieldHitVis = gameObject.transform.Find("Shields").GetComponent<Animator>();
+
+        if(_shieldHitVis == null)
+        {
+            Debug.LogError("Animator is NULL");
+        }
+        
         _fireLeftEngine.gameObject.SetActive(false);
         _fireRightEngine.gameObject.SetActive(false);
     }
@@ -142,11 +150,31 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+        RuntimeAnimatorController hit = gameObject.GetComponent<RuntimeAnimatorController>();
+        
         if(_isShieldActive == true)
         {
-            _isShieldActive = false;
-            _shieldVisuals.SetActive(false);
-            return;
+            if(_shieldHits == 2)
+            {
+                _shieldHits--;
+                _shieldHitVis.SetTrigger("FirstHit");
+                return;
+            }
+            else if(_shieldHits == 1)
+            {
+                _shieldHits--;
+                _shieldHitVis.SetTrigger("SecondHit");
+                return;
+            }
+            else
+            {
+                _isShieldActive = false;
+                _shieldVisuals.SetActive(false);
+                _shieldHits = 2;
+                return;
+            }
+
+            
         }
         
         _lives--;
