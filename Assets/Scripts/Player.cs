@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _shieldVisuals;
     [SerializeField] private AudioClip _laserSound;
     [SerializeField] private AudioClip _playerAudioExplosion;
+    [SerializeField] private AudioClip _ammoEmpty;  
     
     private AudioSource _playerAudio;
 
@@ -34,7 +35,8 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
     private bool _isShieldActive = false;
-    private int _shieldHits = 2;    
+    private int _shieldHits = 2;
+    private int _ammo = 15;
     
     
 
@@ -62,11 +64,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("The Player Audio is NULL");
         }
-        else
-        {
-            _playerAudio.clip = _laserSound;
-        }
-
+  
         _playerExplosion = GetComponent<Animator>();
 
         if(_playerExplosion == null)
@@ -108,18 +106,33 @@ public class Player : MonoBehaviour
 
     private void FireLaser()
     {
-        _canFire = Time.time + _fireRate;
-        
-        if(_isTripleShotActive == true)
+        if(_ammo > 0)
         {
-            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            _ammo--;
+            _playerAudio.clip = _laserSound;
+            _uiManager.UpdateAmmo(_ammo);
+            _canFire = Time.time + _fireRate;
+
+            if (_isTripleShotActive == true)
+            {
+                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefab, transform.position + (Vector3.up * _offset), Quaternion.identity);
+            }
+
+            _playerAudio.Play();
+
         }
-        else
+        else if(_ammo == 0)
         {
-            Instantiate(_laserPrefab, transform.position + (Vector3.up * _offset), Quaternion.identity);
+            _playerAudio.clip = _ammoEmpty;
+            _playerAudio.Play();
         }
 
-        _playerAudio.Play();
+
+
     }
 
     void CalculateMovement()
@@ -150,8 +163,6 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        RuntimeAnimatorController hit = gameObject.GetComponent<RuntimeAnimatorController>();
-        
         if(_isShieldActive == true)
         {
             if(_shieldHits == 2)
@@ -174,7 +185,6 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            
         }
         
         _lives--;
@@ -247,4 +257,6 @@ public class Player : MonoBehaviour
         _score += points;
         _uiManager.UpdateScore(_score);
     }
+
+   
 }

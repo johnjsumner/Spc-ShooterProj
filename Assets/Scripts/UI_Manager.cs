@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private Image _livesImage;
     [SerializeField] private Text _gameOverTxt;
     [SerializeField] private Text _loadLevelTxt;
+    [SerializeField] private Text _ammoCount;
     private bool _gameOverTrue = false;
 
     private GameManager _gameManager;
@@ -35,6 +37,11 @@ public class UI_Manager : MonoBehaviour
     public void UpdateScore(int playerscore)
     {
         _scoreText.text = "Score: " + playerscore.ToString();
+    }
+
+    public void UpdateAmmo(int ammocount)
+    {
+        _ammoCount.text = "Ammo: " + ammocount.ToString();
     }
 
     public void UpdateLives(int currentlives)
