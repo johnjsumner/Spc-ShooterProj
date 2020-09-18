@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed = 4.0f;
     private float _minX = -9.45f;
     private float _maxX = 9.45f;
+    
     private Player _player;
     private Animator _explosion;
 
@@ -43,8 +44,6 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("AudioSource is NULL");
         }
-
-        
     }
 
     // Update is called once per frame
@@ -63,7 +62,6 @@ public class Enemy : MonoBehaviour
             {
                 lasers[i].EnemyLaser();
             }
-           
         }
     }
 
@@ -104,7 +102,5 @@ public class Enemy : MonoBehaviour
             Destroy(GetComponent<Collider2D>());
             Destroy(gameObject, 2.37f);
         }
-
-        
      }
 }

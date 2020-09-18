@@ -18,7 +18,6 @@ public class Laser : MonoBehaviour
         {
             MoveDown();
         }
-       
     }
 
     private void MoveUp()
@@ -66,8 +65,6 @@ public class Laser : MonoBehaviour
             {
                 player.Damage();
             }
-
         }
-        
     }
 }

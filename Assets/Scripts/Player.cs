@@ -26,8 +26,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int _lives = 3;
     [SerializeField] private int _score;
+    
     private Animator _playerExplosion;
-    private Animator _shieldHitVis;
+    
 
     private UI_Manager _uiManager;
     private SpawnManager _spawnManager;
@@ -35,7 +36,10 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
     private bool _isShieldActive = false;
+    
     private int _shieldHits = 2;
+    private Animator _shieldHitVis;
+
     private int _ammo = 15;
     
     
@@ -101,7 +105,6 @@ public class Player : MonoBehaviour
         {
             _isSpeedActive = false;
         }
-
     }
 
     private void FireLaser()
@@ -130,9 +133,6 @@ public class Player : MonoBehaviour
             _playerAudio.clip = _ammoEmpty;
             _playerAudio.Play();
         }
-
-
-
     }
 
     void CalculateMovement()
@@ -184,7 +184,6 @@ public class Player : MonoBehaviour
                 _shieldHits = 2;
                 return;
             }
-
         }
         
         _lives--;
@@ -257,6 +256,4 @@ public class Player : MonoBehaviour
         _score += points;
         _uiManager.UpdateScore(_score);
     }
-
-   
 }

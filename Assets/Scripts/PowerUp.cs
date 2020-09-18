@@ -19,7 +19,6 @@ public class PowerUp : MonoBehaviour
         {
             Debug.LogError("The Player is NULL");
         }
-
     }
 
     // Update is called once per frame

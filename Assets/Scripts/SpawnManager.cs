@@ -12,11 +12,6 @@ public class SpawnManager : MonoBehaviour
     private bool _stopSpawning = false;
     
 
-    private void Start()
-    {
-        
-    }
-
     public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine());
@@ -51,5 +46,4 @@ public class SpawnManager : MonoBehaviour
     {
         _stopSpawning = true;
     }
-
 }

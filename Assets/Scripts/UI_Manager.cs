@@ -9,11 +9,13 @@ public class UI_Manager : MonoBehaviour
 {
     // Variables
     [SerializeField] private Text _scoreText;
-    [SerializeField] private Sprite[] _liveSprites;
-    [SerializeField] private Image _livesImage;
     [SerializeField] private Text _gameOverTxt;
     [SerializeField] private Text _loadLevelTxt;
     [SerializeField] private Text _ammoCount;
+
+    [SerializeField] private Sprite[] _liveSprites;
+    [SerializeField] private Image _livesImage;
+    
     private bool _gameOverTrue = false;
 
     private GameManager _gameManager;
