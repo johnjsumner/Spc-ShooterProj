@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     private int _shieldHits = 2;
     private Animator _shieldHitVis;
 
-    [SerializeField] private int _ammo;
+    [SerializeField] private int _ammo = 15;
     
     
 
