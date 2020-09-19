@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     private int _shieldHits = 2;
     private Animator _shieldHitVis;
 
-    private int _ammo = 15;
+    [SerializeField] private int _ammo;
     
     
 
@@ -118,6 +118,8 @@ public class Player : MonoBehaviour
 
             if (_isTripleShotActive == true)
             {
+                _ammo -= 2;
+                _uiManager.UpdateAmmo(_ammo);
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
             }
             else
@@ -255,5 +257,14 @@ public class Player : MonoBehaviour
     {
         _score += points;
         _uiManager.UpdateScore(_score);
+    }
+
+    public void AmmoReload()
+    {
+        if(_ammo < 15)
+        {
+            _ammo = 15;
+            _uiManager.UpdateAmmo(_ammo);
+        }
     }
 }

@@ -8,6 +8,7 @@ public class PowerUp : MonoBehaviour
     private Player _player;
     [SerializeField] private int _powerUpID; // 0 = TripleShot 1 = Speed 2 = Shields
     [SerializeField] private AudioClip _audioClip;
+    [SerializeField] private AudioClip _ammoReload;
 
 
     // Start is called before the first frame update
@@ -39,18 +40,23 @@ public class PowerUp : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
 
-            AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
-
             switch (_powerUpID)
             {
                 case 0:
+                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
                     _player.TripleShotActive();
                     break;
                 case 1:
+                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
                     _player.SpeedActive();
                     break;
                 case 2:
+                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
                     _player.ShieldActive();
+                    break;
+                case 3:
+                    AudioSource.PlayClipAtPoint(_ammoReload, transform.position, 1.0f);
+                    _player.AmmoReload();
                     break;
                 default:
                     Debug.Log("Default Value");

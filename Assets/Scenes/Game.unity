@@ -1049,6 +1049,7 @@ MonoBehaviour:
   - {fileID: 9129877206459697776, guid: 4af1027a1e1e1924083eee6f0c674c62, type: 3}
   - {fileID: 323942457383498928, guid: 2f034a4f40849c143a9bb202ea9d1116, type: 3}
   - {fileID: 6937871627101611417, guid: 5018d38dddd29cc45b8e279a8b326668, type: 3}
+  - {fileID: 696030342606657920, guid: daa654505c0520c4ba92d8e9dce074d5, type: 3}
   _enemyContainer: {fileID: 1192815331}
 --- !u!4 &1367558475
 Transform:
@@ -1194,15 +1195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 2140760667}
+  _gameOverTxt: {fileID: 826842569}
+  _loadLevelTxt: {fileID: 2134236496}
+  _ammoCount: {fileID: 430792181}
   _liveSprites:
   - {fileID: 21300000, guid: ba53e111f0125654cabfd4eefaf3a657, type: 3}
   - {fileID: 21300000, guid: 80fba5ece7697c44eacc036539c1b552, type: 3}
   - {fileID: 21300000, guid: 482c8e4c0346b704aa5f1760c3c989d5, type: 3}
   - {fileID: 21300000, guid: 9fe6f40efddf0b64fb68a3382b14a4db, type: 3}
   _livesImage: {fileID: 68947251}
-  _gameOverTxt: {fileID: 826842569}
-  _loadLevelTxt: {fileID: 2134236496}
-  _ammoCount: {fileID: 430792181}
 --- !u!114 &1644174985
 MonoBehaviour:
   m_ObjectHideFlags: 0
