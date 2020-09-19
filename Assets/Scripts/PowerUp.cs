@@ -43,19 +43,19 @@ public class PowerUp : MonoBehaviour
             switch (_powerUpID)
             {
                 case 0:
-                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
+                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.TripleShotActive();
                     break;
                 case 1:
-                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
+                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.SpeedActive();
                     break;
                 case 2:
-                    AudioSource.PlayClipAtPoint(_audioClip, transform.position, 1.0f);
+                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.ShieldActive();
                     break;
                 case 3:
-                    AudioSource.PlayClipAtPoint(_ammoReload, transform.position, 1.0f);
+                    AudioSource.PlayClipAtPoint(_ammoReload, new Vector3(0, 0, -10), 1f);
                     _player.AmmoReload();
                     break;
                 default:
