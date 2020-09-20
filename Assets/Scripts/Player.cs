@@ -251,6 +251,11 @@ public class Player : MonoBehaviour
     {
         _isShieldActive = true;
         _shieldVisuals.SetActive(true);
+        if(_shieldHits < 2)
+        {
+            _shieldHitVis.SetTrigger("RefreshShields");
+            _shieldHits = 2;
+        }
     }
 
     public void AddToScore(int points)
