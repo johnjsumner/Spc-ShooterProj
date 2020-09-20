@@ -267,4 +267,21 @@ public class Player : MonoBehaviour
             _uiManager.UpdateAmmo(_ammo);
         }
     }
+
+    public void HealthUp()
+    {
+        if(_lives == 2)
+        {
+            _lives++;
+            _uiManager.UpdateLives(_lives);
+            _fireLeftEngine.gameObject.SetActive(false);
+
+        }
+        else
+        {
+            _lives++;
+            _uiManager.UpdateLives(_lives);
+            _fireRightEngine.gameObject.SetActive(false);
+        }
+    }
 }

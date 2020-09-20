@@ -1050,6 +1050,7 @@ MonoBehaviour:
   - {fileID: 323942457383498928, guid: 2f034a4f40849c143a9bb202ea9d1116, type: 3}
   - {fileID: 6937871627101611417, guid: 5018d38dddd29cc45b8e279a8b326668, type: 3}
   - {fileID: 696030342606657920, guid: daa654505c0520c4ba92d8e9dce074d5, type: 3}
+  - {fileID: 8655390541404479454, guid: 9bb79d0cffe4d4848820b72f74f7b0fb, type: 3}
   _enemyContainer: {fileID: 1192815331}
 --- !u!4 &1367558475
 Transform:
