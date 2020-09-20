@@ -1337,6 +1337,7 @@ MonoBehaviour:
   _lives: 3
   _score: 0
   _isSpeedActive: 0
+  _ammo: 15
 --- !u!212 &1709938541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2115,8 +2116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -101.01, y: -38.58}
-  m_SizeDelta: {x: 202.026, y: 37.163048}
+  m_AnchoredPosition: {x: -131.94, y: -43.24}
+  m_SizeDelta: {x: 98.28183, y: 46.488388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2617907416324019222
 PrefabInstance:

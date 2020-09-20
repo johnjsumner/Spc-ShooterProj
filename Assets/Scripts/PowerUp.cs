@@ -6,7 +6,7 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] private float _speed = 3.0f;
     private Player _player;
-    [SerializeField] private int _powerUpID; // 0 = TripleShot 1 = Speed 2 = Shields
+    [SerializeField] private int _powerUpID; // 0 = TripleShot 1 = Speed 2 = Shields 3 = Ammo
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private AudioClip _ammoReload;
 
@@ -35,27 +35,30 @@ public class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        
         if(collision.gameObject.tag == "Player")
         {
+
+            if (_powerUpID == 0 || _powerUpID == 1 || _powerUpID == 2)
+            {
+                AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(_ammoReload, new Vector3(0, 0, -10), 1f);
+            }
 
             switch (_powerUpID)
             {
                 case 0:
-                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.TripleShotActive();
                     break;
                 case 1:
-                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.SpeedActive();
                     break;
                 case 2:
-                    AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
                     _player.ShieldActive();
                     break;
                 case 3:
-                    AudioSource.PlayClipAtPoint(_ammoReload, new Vector3(0, 0, -10), 1f);
                     _player.AmmoReload();
                     break;
                 default:
