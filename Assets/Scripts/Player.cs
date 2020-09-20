@@ -277,11 +277,15 @@ public class Player : MonoBehaviour
             _fireLeftEngine.gameObject.SetActive(false);
 
         }
-        else
+        else if(_lives == 1)
         {
             _lives++;
             _uiManager.UpdateLives(_lives);
             _fireRightEngine.gameObject.SetActive(false);
+        }
+        else
+        {
+            return;
         }
     }
 }
