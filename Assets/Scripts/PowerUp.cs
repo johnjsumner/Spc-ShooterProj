@@ -6,7 +6,7 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] private float _speed = 3.0f;
     private Player _player;
-    [SerializeField] private int _powerUpID; // 0 = TripleShot 1 = Speed 2 = Shields 3 = Ammo 4 = Health
+    [SerializeField] private int _powerUpID; // 0 = TripleShot 1 = Speed 2 = Shields 3 = Ammo 4 = Health 5 = Missiles
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private AudioClip _ammoReload;
 
@@ -20,6 +20,8 @@ public class PowerUp : MonoBehaviour
         {
             Debug.LogError("The Player is NULL");
         }
+
+
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class PowerUp : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
 
-            if (_powerUpID == 0 || _powerUpID == 1 || _powerUpID == 2 || _powerUpID == 4)
+            if (_powerUpID == 0 || _powerUpID == 1 || _powerUpID == 2 || _powerUpID == 4  || _powerUpID == 5)
             {
                 AudioSource.PlayClipAtPoint(_audioClip, new Vector3(0, 0, -10), 0.5f);
             }
@@ -63,6 +65,9 @@ public class PowerUp : MonoBehaviour
                     break;
                 case 4:
                     _player.HealthUp();
+                    break;
+                case 5:
+                    _player.MissileActive();
                     break;
                 default:
                     Debug.Log("Default Value");

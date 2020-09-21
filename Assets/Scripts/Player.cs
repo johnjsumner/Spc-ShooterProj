@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     private float _doubleSpeed = 2.0f;
 
     [SerializeField] private GameObject _laserPrefab;
+    [SerializeField] private GameObject _missilePrefab;
     [SerializeField] private GameObject _tripleShotPrefab;
     [SerializeField] private GameObject _fireLeftEngine;
     [SerializeField] private GameObject _fireRightEngine;
     [SerializeField] private GameObject _shieldVisuals;
     [SerializeField] private AudioClip _laserSound;
+    [SerializeField] private AudioClip _missileSound;  
     [SerializeField] private AudioClip _playerAudioExplosion;
     [SerializeField] private AudioClip _ammoEmpty;  
     
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
     private bool _isShieldActive = false;
+    private bool _isMissileActive = false;
     
     private int _shieldHits = 2;
     private Animator _shieldHitVis;
@@ -82,7 +85,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Animator is NULL");
         }
-        
+
         _fireLeftEngine.gameObject.SetActive(false);
         _fireRightEngine.gameObject.SetActive(false);
     }
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour
 
     private void FireLaser()
     {
-        if(_ammo > 0)
+        if(_ammo > 0 && _isMissileActive == false)
         {
             _ammo--;
             _playerAudio.clip = _laserSound;
@@ -130,9 +133,16 @@ public class Player : MonoBehaviour
             _playerAudio.Play();
 
         }
-        else if(_ammo == 0)
+        else if(_ammo == 0  && _isMissileActive == false)
         {
             _playerAudio.clip = _ammoEmpty;
+            _playerAudio.Play();
+        }
+
+        else if(_isMissileActive == true)
+        {
+            _playerAudio.clip = _missileSound;
+            Instantiate(_missilePrefab, transform.position, Quaternion.identity);
             _playerAudio.Play();
         }
     }
@@ -230,7 +240,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    public void MissileActive()
+    {
+        _isMissileActive = true;
+        StartCoroutine(MissilePowerDown());
+    }
+
+    IEnumerator MissilePowerDown()
+    {
+        while(_isMissileActive == true)
+        {
+            yield return new WaitForSeconds(5.0f);
+            _isMissileActive = false;
+        }
+    }
 
     public void SpeedActive()
     {

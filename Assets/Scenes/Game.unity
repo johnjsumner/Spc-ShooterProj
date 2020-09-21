@@ -1051,6 +1051,7 @@ MonoBehaviour:
   - {fileID: 6937871627101611417, guid: 5018d38dddd29cc45b8e279a8b326668, type: 3}
   - {fileID: 696030342606657920, guid: daa654505c0520c4ba92d8e9dce074d5, type: 3}
   - {fileID: 8655390541404479454, guid: 9bb79d0cffe4d4848820b72f74f7b0fb, type: 3}
+  - {fileID: 1944019886387044534, guid: def8510ed3854c844a90c345a0bc0a50, type: 3}
   _enemyContainer: {fileID: 1192815331}
 --- !u!4 &1367558475
 Transform:
@@ -1325,12 +1326,15 @@ MonoBehaviour:
   _speed: 5
   _laserPrefab: {fileID: 2523800683058913161, guid: 5cc5d0fcbd8ac324ebdfb1978fd4086b,
     type: 3}
+  _missilePrefab: {fileID: 5632359860250657526, guid: c0c85c0a625db8a4b9bcf5d78bd963e6,
+    type: 3}
   _tripleShotPrefab: {fileID: 7174085223171261245, guid: 4562183912ee03349a9648253d4e889c,
     type: 3}
   _fireLeftEngine: {fileID: 1198344378}
   _fireRightEngine: {fileID: 2007155899}
   _shieldVisuals: {fileID: 602744611}
   _laserSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
+  _missileSound: {fileID: 8300000, guid: eb706e076a8be0d49a356c28e4690387, type: 3}
   _playerAudioExplosion: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc,
     type: 3}
   _ammoEmpty: {fileID: 8300000, guid: e9b7864aebb0a4346922fa8efe2d7740, type: 3}
@@ -1398,7 +1402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709938539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.38, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 602744612}
