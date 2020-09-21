@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
             _playerAudio.Play();
 
         }
-        else if(_ammo == 0  && _isMissileActive == false)
+        else if(_ammo <= 0  && _isMissileActive == false)
         {
             _playerAudio.clip = _ammoEmpty;
             _playerAudio.Play();
@@ -310,10 +310,6 @@ public class Player : MonoBehaviour
             _lives++;
             _uiManager.UpdateLives(_lives);
             _fireRightEngine.gameObject.SetActive(false);
-        }
-        else
-        {
-            return;
         }
     }
 }

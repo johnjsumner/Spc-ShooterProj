@@ -43,6 +43,11 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateAmmo(int ammocount)
     {
+        if(ammocount < 0)
+        {
+            ammocount = 0;
+        }
+
         _ammoCount.text = "Ammo: " + ammocount.ToString();
     }
 

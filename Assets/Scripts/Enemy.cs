@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
             _speed = 0;
             _audioSource.Play();
             Destroy(GetComponent<Collider2D>());
-            Destroy(gameObject, 2.37f);
+            Destroy(gameObject, 2f);
         }
 
         if(other.gameObject.tag == "Laser")
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
             _speed = 0;
             _audioSource.Play();
             Destroy(GetComponent<Collider2D>());
-            Destroy(gameObject, 2.37f);
+            Destroy(gameObject, 2f);
         }
         if(other.gameObject.tag == "Missile")
         {
@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
             _speed = 0;
             _audioSource.Play();
             Destroy(GetComponent<Collider2D>());
-            Destroy(gameObject, 2.37f);
+            Destroy(gameObject, 2f);
         }
      }
 }
