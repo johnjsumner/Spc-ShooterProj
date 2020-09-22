@@ -7,6 +7,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     public List<Transform> Enemies;
     public Transform SelectedTarget;
+    private float _checkTargetTime;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,13 @@ public class Missile : MonoBehaviour
         float dist = Vector3.Distance(SelectedTarget.transform.position, transform.position);
 
         transform.position = Vector3.MoveTowards(transform.position, SelectedTarget.position, _speed * Time.deltaTime);
+
+        _checkTargetTime += Time.deltaTime;
+        if(_checkTargetTime >= 0.5f)
+        {
+            _checkTargetTime = 0;
+            AddEnemiesToList();
+        }
       
     }
 

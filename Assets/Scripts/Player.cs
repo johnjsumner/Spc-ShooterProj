@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
                 _playerAudio.clip = _missileSound;
                 Instantiate(_missilePrefab, transform.position, Quaternion.identity);
                 _playerAudio.Play();
+                //Destroy(cloneMissile, 4.0f);
             }
         }
     }

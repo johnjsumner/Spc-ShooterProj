@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
             _explosion.SetTrigger("OnEnemyDeath");
             _speed = 0;
             _audioSource.Play();
+            Destroy(GetComponent<Collider2D>());
             Destroy(gameObject, 2f);
         }
 
@@ -98,17 +99,19 @@ public class Enemy : MonoBehaviour
             _explosion.SetTrigger("OnEnemyDeath");
             _speed = 0;
             _audioSource.Play();
+            Destroy(GetComponent<Collider2D>());
             Destroy(gameObject, 2f);
         }
         if(other.gameObject.tag == "Missile")
         {
-            Destroy(other.gameObject);
+             Destroy(other.gameObject);
             _player.AddToScore(10);
-
-            gameObject.tag = ("Untagged");
+            
             _explosion.SetTrigger("OnEnemyDeath");
             _speed = 0;
             _audioSource.Play();
+            gameObject.tag = ("Untagged");
+            Destroy(GetComponent<Collider2D>());
             Destroy(gameObject, 2f);
         }
      }
