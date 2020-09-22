@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         {
             FireLaser();
         }
-
+        
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             _isSpeedActive = true;       
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
     private void FireLaser()
     {
-        if(_ammo > 0 && _isMissileActive == false)
+        if (_ammo > 0 && _isMissileActive == false)
         {
             _ammo--;
             _playerAudio.clip = _laserSound;
@@ -133,17 +133,22 @@ public class Player : MonoBehaviour
             _playerAudio.Play();
 
         }
-        else if(_ammo <= 0  && _isMissileActive == false)
+        else if (_ammo <= 0 && _isMissileActive == false)
         {
             _playerAudio.clip = _ammoEmpty;
             _playerAudio.Play();
         }
 
-        else if(_isMissileActive == true)
+        else if (_isMissileActive == true)
         {
-            _playerAudio.clip = _missileSound;
-            Instantiate(_missilePrefab, transform.position, Quaternion.identity);
-            _playerAudio.Play();
+            GameObject enemyInScene = GameObject.FindGameObjectWithTag("Enemy");
+
+            if (enemyInScene != null)
+            {
+                _playerAudio.clip = _missileSound;
+                Instantiate(_missilePrefab, transform.position, Quaternion.identity);
+                _playerAudio.Play();
+            }
         }
     }
 
@@ -250,7 +255,7 @@ public class Player : MonoBehaviour
     {
         while(_isMissileActive == true)
         {
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(30f);
             _isMissileActive = false;
         }
     }
