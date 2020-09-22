@@ -142,13 +142,13 @@ public class Player : MonoBehaviour
         else if (_isMissileActive == true)
         {
             GameObject enemyInScene = GameObject.FindGameObjectWithTag("Enemy");
+            GameObject missileInScene = GameObject.FindGameObjectWithTag("Missile");
 
-            if (enemyInScene != null)
+            if (enemyInScene != null && missileInScene == null)
             {
                 _playerAudio.clip = _missileSound;
                 Instantiate(_missilePrefab, transform.position, Quaternion.identity);
                 _playerAudio.Play();
-                //Destroy(cloneMissile, 4.0f);
             }
         }
     }
@@ -256,7 +256,7 @@ public class Player : MonoBehaviour
     {
         while(_isMissileActive == true)
         {
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(5f);
             _isMissileActive = false;
         }
     }
