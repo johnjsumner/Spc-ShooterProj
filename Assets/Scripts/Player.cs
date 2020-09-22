@@ -255,7 +255,7 @@ public class Player : MonoBehaviour
     {
         while(_isMissileActive == true)
         {
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(5.0f);
             _isMissileActive = false;
         }
     }
