@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _fireRightEngine;
     [SerializeField] private GameObject _shieldVisuals;
     [SerializeField] private AudioClip _laserSound;
-    [SerializeField] private AudioClip _missileSound;  
+    [SerializeField] private AudioClip _missileSound;
     [SerializeField] private AudioClip _playerAudioExplosion;
     [SerializeField] private AudioClip _ammoEmpty;
     private Transform _thruster;
