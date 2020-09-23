@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip _laserSound;
     [SerializeField] private AudioClip _missileSound;  
     [SerializeField] private AudioClip _playerAudioExplosion;
-    [SerializeField] private AudioClip _ammoEmpty;  
+    [SerializeField] private AudioClip _ammoEmpty;
+    private Transform _thruster;
     
     private AudioSource _playerAudio;
 
@@ -85,6 +86,9 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Animator is NULL");
         }
+
+        _thruster = transform.Find("Thruster");
+        _thruster.gameObject.SetActive(false);
 
         _fireLeftEngine.gameObject.SetActive(false);
         _fireRightEngine.gameObject.SetActive(false);
@@ -160,10 +164,12 @@ public class Player : MonoBehaviour
         
         if(_isSpeedActive == false)
         {
+            _thruster.gameObject.SetActive(false);
             transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
         }
         else
         {
+            _thruster.gameObject.SetActive(true);
             transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * _doubleSpeed * Time.deltaTime);
         }
         
@@ -264,6 +270,7 @@ public class Player : MonoBehaviour
     public void SpeedActive()
     {
         _isSpeedActive = true;
+        _thruster.gameObject.SetActive(true);
         StartCoroutine(SpeedPowerDown());
     }
 
