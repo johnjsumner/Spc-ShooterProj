@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip _playerAudioExplosion;
     [SerializeField] private AudioClip _ammoEmpty;
     private Transform _thruster;
+    private bool _thrusterStatus;
     
     private AudioSource _playerAudio;
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
 
     private UI_Manager _uiManager;
     private SpawnManager _spawnManager;
+    private ThrusterBar _thrusterBar;
     
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
@@ -87,6 +90,8 @@ public class Player : MonoBehaviour
             Debug.LogError("Animator is NULL");
         }
 
+        _thrusterBar = GameObject.Find("Thruster_PowerSlide").GetComponent<ThrusterBar>();
+
         _thruster = transform.Find("Thruster");
         _thruster.gameObject.SetActive(false);
 
@@ -106,11 +111,13 @@ public class Player : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _isSpeedActive = true;       
+            _isSpeedActive = true;
+            _thrusterBar.ThrustActive(_isSpeedActive);
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             _isSpeedActive = false;
+            _thrusterBar.ThrustActive(_isSpeedActive);
         }
     }
 
@@ -323,6 +330,14 @@ public class Player : MonoBehaviour
             _lives++;
             _uiManager.UpdateLives(_lives);
             _fireRightEngine.gameObject.SetActive(false);
+        }
+    }
+
+    public void NoThruster(float value)
+    {
+        if (value >= 4f)
+        {
+            _isSpeedActive = false;
         }
     }
 }
