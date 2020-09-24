@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
     private UI_Manager _uiManager;
     private SpawnManager _spawnManager;
     private ThrusterBar _thrusterBar;
+    private CameraShake _camShake;
+    [SerializeField] float _amplitude = 3.0f;
+    [SerializeField] float _frequency = 2.5f;
+    [SerializeField] float _time = 0.4f;
     
     private bool _isTripleShotActive = false;
     [SerializeField] private bool _isSpeedActive = false;
@@ -91,6 +95,18 @@ public class Player : MonoBehaviour
         }
 
         _thrusterBar = GameObject.Find("Thruster_PowerSlide").GetComponent<ThrusterBar>();
+
+        if(_thrusterBar == null)
+        {
+            Debug.LogError("ThrusterBar is NULL");
+        }
+
+        _camShake = GameObject.Find("Cinemachine_Camera").GetComponent<CameraShake>();
+
+        if (_camShake == null)
+        {
+            Debug.LogError("Camshake is NULL");
+        }
 
         _thruster = transform.Find("Thruster");
         _thruster.gameObject.SetActive(false);
@@ -216,7 +232,9 @@ public class Player : MonoBehaviour
                 return;
             }
         }
-        
+
+        _camShake.Shake(_amplitude, _frequency, _time);
+
         _lives--;
 
         _uiManager.UpdateLives( _lives);
