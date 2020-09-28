@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,7 +10,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed = 4.0f;
     private float _minX = -9.45f;
     private float _maxX = 9.45f;
-    
+
+    private float _minY = -2f;
+    private float _maxY = 5f;
+
     private Player _player;
     private Animator _explosion;
 
@@ -18,9 +22,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _enemyLaser;
     private float _fireRate = 3f;
     private float _canFire = -1f;
-    
+    private bool _enemyDown = false;
 
-    
+    private bool _dirRight = true;
+
+
 
     private void Start()
     {
@@ -67,11 +73,36 @@ public class Enemy : MonoBehaviour
 
     private void CalculateMovement()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        /*transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
         if (transform.position.y <= -7.0f)
         {
-            transform.position = new Vector3(Random.Range(_minX, _maxX), 8, 0);
+               transform.position = new Vector3(Random.Range(_minX, _maxX), 8, 0);
+        }*/
+        //transform.Translate(Vector3.right * _speed * Time.deltaTime);
+
+        if(transform.position.x >= 9.5f)
+        {
+            _dirRight = false;
+        }
+
+        else if(transform.position.x <= -9.5f)
+        {
+            _dirRight = true;
+        }
+        
+        if (_dirRight)
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+
+            /*if (transform.position.x >= 12f)
+            {
+                transform.position = new Vector3(-12, Random.Range(_minY, _maxY), 0);
+            }*/
+        }
+        else
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
         }
     }
 
