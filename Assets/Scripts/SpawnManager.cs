@@ -26,24 +26,10 @@ public class SpawnManager : MonoBehaviour
     }
     public void StartSpawning()
     {
-        //StartCoroutine(SpawnEnemyRoutineDown());
         StartCoroutine(SpawnEnemyRoutineAcross());
         StartCoroutine(SpawnPowerUpRoutine());
         StartCoroutine(SpawnMissilePowerUp());
     }
-
-    IEnumerator SpawnEnemyRoutineDown()
-    {
-        yield return new WaitForSeconds(3.0f);
-        while(_stopSpawning == false)
-        {
-            Vector3 spawnEnemyPosX = new Vector3(Random.Range(_minX, _maxX), 8, 0);
-            GameObject newEnemyX = Instantiate(_enemy, spawnEnemyPosX, Quaternion.identity);
-            newEnemyX.transform.parent = _enemyContainer.transform;
-            yield return new WaitForSeconds(5.0f);
-        }
-    }
-
     IEnumerator SpawnEnemyRoutineAcross()
     {
         yield return new WaitForSeconds(3.0f);

@@ -73,14 +73,6 @@ public class Enemy : MonoBehaviour
 
     private void CalculateMovement()
     {
-        /*transform.Translate(Vector3.down * _speed * Time.deltaTime);
-
-        if (transform.position.y <= -7.0f)
-        {
-               transform.position = new Vector3(Random.Range(_minX, _maxX), 8, 0);
-        }*/
-        //transform.Translate(Vector3.right * _speed * Time.deltaTime);
-
         if(transform.position.x >= 9.5f)
         {
             _dirRight = false;
@@ -94,11 +86,6 @@ public class Enemy : MonoBehaviour
         if (_dirRight)
         {
             transform.Translate(Vector3.right * _speed * Time.deltaTime);
-
-            /*if (transform.position.x >= 12f)
-            {
-                transform.position = new Vector3(-12, Random.Range(_minY, _maxY), 0);
-            }*/
         }
         else
         {
