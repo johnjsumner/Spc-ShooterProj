@@ -13,31 +13,34 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject _enemyContainer;
     private bool _stopSpawning = false;
 
-    private Enemy _enemyMovement;
 
-    private void Start()
-    {
-        _enemyMovement = GameObject.Find("Enemy").GetComponent<Enemy>();
-
-        if(_enemyMovement == null)
-        {
-            Debug.LogError("Enemy is NULL");
-        }    
-    }
     public void StartSpawning()
     {
-        StartCoroutine(SpawnEnemyRoutineAcross());
+        StartCoroutine(SpawnEnemyRoutineLeftToRight());
+        StartCoroutine(SpawnEnemyRoutineRightToLeft());
         StartCoroutine(SpawnPowerUpRoutine());
         StartCoroutine(SpawnMissilePowerUp());
     }
-    IEnumerator SpawnEnemyRoutineAcross()
+    IEnumerator SpawnEnemyRoutineLeftToRight()
     {
         yield return new WaitForSeconds(3.0f);
         while(_stopSpawning == false)
         {
-            Vector3 spawnEmenyPosY = new Vector3(-12, Random.Range(_minY, _maxY), 0);
-            GameObject newEnemyY = Instantiate(_enemy, spawnEmenyPosY, Quaternion.identity);
-            newEnemyY.transform.parent = _enemyContainer.transform;
+            Vector3 spawnEmenyPosYL = new Vector3(-12, Random.Range(_minY, _maxY), 0);
+            GameObject newEnemyYL = Instantiate(_enemy, spawnEmenyPosYL, Quaternion.identity);
+            newEnemyYL.transform.parent = _enemyContainer.transform;
+            yield return new WaitForSeconds(5.0f);
+        }
+    }
+
+    IEnumerator SpawnEnemyRoutineRightToLeft()
+    {
+        yield return new WaitForSeconds(3.0f);
+        while (_stopSpawning == false)
+        {
+            Vector3 spawnEmenyPosYR = new Vector3(12, Random.Range(_minY, _maxY), 0);
+            GameObject newEnemyYR = Instantiate(_enemy, spawnEmenyPosYR, Quaternion.identity);
+            newEnemyYR.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
         }
     }
